@@ -15,6 +15,17 @@ Python
 Fonts
 -----
 
+Use homebrew
+
+```
+brew search nerd-font
+brew cask install font-meslo-nerd-font
+brew cask install font-meslo-nerd-font-mono
+brew cask install font-mononoki-nerd-font
+
+# in item2 import iterm2-docker-gvim.json
+```
+
 Make NERDTree Font
 
 ```bash
