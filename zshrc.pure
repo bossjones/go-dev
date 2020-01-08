@@ -1,0 +1,318 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME=""
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+# plugins=(
+#   zsh-autosuggestions common-aliases git go
+# )
+
+# source $ZSH/oh-my-zsh.sh
+
+export SHELL='zsh'
+# Golang
+export GOPATH=/go
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
+export PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
+alias cdgo='CDPATH=.:$GOPATH/src/github.com:$GOPATH/src/golang.org:$GOPATH/src'
+
+HIST_STAMPS="yyyy-mm-dd"
+UPDATE_ZSH_DAYS="30"
+COMPLETION_WAITING_DOTS="true"
+
+
+# ADOTDIR="$HOME/.antigen"
+
+export ANTIGEN_BUNDLES="$HOME/.antigen/bundles"
+ANTIGEN_PLUGIN_UPDATE_DAYS="30"
+ANTIGEN_SYSTEM_UPDATE_DAYS="30"
+
+autoload -U promptinit && promptinit
+
+source "$HOME/.antigen/antigen/antigen.zsh"
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+antigen bundle go
+antigen bundle tmux
+antigen bundle zsh_reload
+antigen bundle tmux
+antigen bundle python
+antigen bundle golang
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle popstas/zsh-command-time
+antigen bundle unixorn/autoupdate-antigen.zshplugin
+antigen bundle urbainvaes/fzf-marks
+antigen bundle ytet5uy4/fzf-widgets
+antigen bundle zdharma/fast-syntax-highlighting
+antigen bundle joel-porquet/zsh-dircolors-solarized
+antigen bundle mollifier/anyframe
+antigen bundle history
+antigen bundle colored-man-pages
+antigen bundle srijanshetty/node.plugin.zsh
+antigen bundle bossjones/boss-git-zsh-plugin
+antigen bundle bossjones/boss-docker-zsh-plugin
+antigen bundle caarlos0/zsh-git-sync
+antigen bundle chrissicool/zsh-256color
+antigen bundle mafredri/zsh-async
+antigen bundle sindresorhus/pure
+
+# Tell antigen that you're done.
+antigen apply
+
+unsetopt share_history
+
+
+autoload -Uz copy-earlier-word
+zle -N copy-earlier-word
+
+# hotkeys
+bindkey '\e[1~' beginning-of-line
+bindkey '\e[4~' end-of-line
+bindkey '^@' fzf-select-widget
+bindkey '^@.' fzf-edit-dotfiles
+bindkey '^@c' fzf-change-directory
+bindkey '^@f' fzf-edit-files
+bindkey '^@k' fzf-kill-processes
+bindkey '^@s' fzf-exec-ssh
+bindkey '^\' fzf-change-recent-directory
+bindkey '^r' fzf-insert-history
+bindkey '^xf' fzf-insert-files
+bindkey '^xd' fzf-insert-directory
+bindkey '^@g' fzf-select-git-widget
+bindkey '^@ga' fzf-git-add-files
+bindkey '^@gc' fzf-git-change-repository
+bindkey '^@gco' fzf-git-checkout-branch
+bindkey '^@gd' fzf-git-delete-branches
+bindkey '^@gh' fzf-select-github-widget
+bindkey '^@ghi' fzf-github-show-issue
+bindkey '^@ghe' fzf-github-edit-issue
+bindkey '^@gho' fzf-github-open-issue
+bindkey '^@ghc' fzf-github-close-issue
+bindkey '^@ghco' fzf-github-comment-issue
+bindkey '^@d' fzf-select-docker-widget
+bindkey '^@dk' fzf-docker-kill-containers
+bindkey '^@dl' fzf-docker-logs-container
+bindkey '^@dr' fzf-docker-remove-containers
+bindkey '^@dri' fzf-docker-remove-images
+bindkey '^@drv' fzf-docker-remove-volumes
+bindkey '^@dsa' fzf-docker-start-containers
+bindkey '^@dso' fzf-docker-stop-containers
+bindkey '^U' autosuggest-accept
+
+# fzf
+export FZF_TMUX=0
+export FZF_DEFAULT_OPTS="--height 100% --reverse"
+
+# fzf-widgets: fzf-change-reset-dir
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+declare -p FZF_WIDGETS_OPTS > /dev/null 2>&1 && FZF_WIDGETS_OPTS[insert-history]="--exact"
+declare -p FZF_WIDGET_OPTS > /dev/null 2>&1 && FZF_WIDGET_OPTS[insert-history]="--exact"
+
+# zsh-autosuggestions
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=15
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240" # gray highlight
+
+# User configuration
+export TERM="xterm-256color"
+
+export LANG="C.UTF-8"
+export LC_COLLATE="C.UTF-8"
+export LC_CTYPE="C.UTF-8"
+export LC_MESSAGES="C.UTF-8"
+export LC_MONETARY="C.UTF-8"
+export LC_NUMERIC="C.UTF-8"
+export LC_TIME="C.UTF-8"
+
+# zsh-completions
+# fpath=(/usr/local/share/zsh-completions $fpath)
+
+alias vi="nvim"
+alias vim="nvim"
+
+# ################################################################
+# autoload -U promptinit; promptinit
+
+# # optionally define some options
+# PURE_CMD_MAX_EXEC_TIME=10
+
+# # change the path color
+# zstyle :prompt:pure:path color white
+
+# # change the color for both `prompt:success` and `prompt:error`
+# zstyle ':prompt:pure:prompt:*' color cyan
+
+# prompt pure
+# ################################################################
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+# set some history options
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt hist_save_no_dups
+setopt hist_verify
+setopt INC_APPEND_HISTORY
+unsetopt HIST_BEEP
+
+# Share your history across all your terminal windows
+setopt share_history
+#setopt noclobber
+
+# Larger bash history (allow 32³ entries; default is 500)
+
+HISTSIZE=100000
+SAVEHIST=100000
+HISTFILE="$HOME/.zsh_history"
+
+# Prefer US English and use UTF-8
+# export LANG=en_US.UTF-8
+# export LC_ALL=en_US.UTF-8
+
+# # SOURCE: https://github.com/luismayta/dotfiles/blob/597ddc09e1bfccc43076ca21cb679299b83912e4/conf/shell/zshrc
+# # don't put duplicate lines in the history. See bash(1) for more options
+# # ... or force ignoredups and ignorespace
+# HISTCONTROL=ignoredups:ignorespace
+
+# # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+# HISTSIZE=100000
+# HISTFILESIZE=2000
+
+alias reload!='exec "$SHELL" -l'
+
+# setopt HIST_FIND_NO_DUPS
+
+# Add some completions settings
+setopt ALWAYS_TO_END     # Move cursor to the end of a completed word.
+setopt AUTO_LIST         # Automatically list choices on ambiguous completion.
+setopt AUTO_MENU         # Show completion menu on a successive tab press.
+setopt AUTO_PARAM_SLASH  # If completed parameter is a directory, add a trailing slash.
+setopt COMPLETE_IN_WORD  # Complete from both ends of a word.
+unsetopt MENU_COMPLETE   # Do not autoselect the first completion entry.
+
+# Long running processes should return time after they complete. Specified
+# in seconds.
+REPORTTIME=2
+TIMEFMT="%U user %S system %P cpu %*Es total"
+
+# # Speed up autocomplete, force prefix mapping
+# zstyle ':completion:*' accept-exact '*(N)'
+# zstyle ':completion:*' use-cache on
+# zstyle ':completion:*' cache-path ~/.zsh/cache
+# zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)*==34=34}:${(s.:.)LS_COLORS}")';
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# remove dupes from $PATH using a zsh builtin
+# https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path
+typeset -aU path;
+
+# # Load iTerm shell integrations if found.
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Expand aliases inline - see http://blog.patshead.com/2012/11/automatically-expaning-zsh-global-aliases---simplified.html
+globalias() {
+   if [[ $LBUFFER =~ ' [A-Z0-9]+$' ]]; then
+     zle _expand_alias
+     zle expand-word
+   fi
+   zle self-insert
+}
+
+zle -N globalias
+
+bindkey " " globalias
+bindkey "^ " magic-space           # control-space to bypass completion
+bindkey -M isearch " " magic-space # normal space during searches
+
+PURE_PROMPT_SYMBOL=❯
+prompt pure

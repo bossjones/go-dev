@@ -45,4 +45,8 @@ clean: ## Clean docker image and stop all running containers
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
+.PHONY: alias
+alias:
+	echo 'alias docker-gvim="docker run --init -it --rm -v \$(pwd):/code -v $$GOPATH:/go -v /etc/localtime:/etc/localtime:ro -v $$HOME/.docker_go_dev_zsh_history:/root/.zsh_history:rw blacktop/go-dev:1.13"'
+
 .DEFAULT_GOAL := help
